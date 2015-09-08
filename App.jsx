@@ -16,12 +16,33 @@ App = React.createClass({
         return <Suggestion key={suggestion._id} suggestion={suggestion} />;
       });
     },
+    
+    handleSubmit(event) {
+        event.preventDefault();
+
+        // Find the text field via the React ref
+        var text = React.findDOMNode(this.refs.textInput).value.trim();
+
+        Suggestions.insert({
+          text: text,
+          createdAt: new Date() // current time
+        });
+
+        // Clear form
+        React.findDOMNode(this.refs.textInput).value = "";
+    },
 
     render() {
         return (
           <div className="container">
             <header>
               <h1>Lunch Suggestions</h1>
+                <form className="new-suggestion" onSubmit={this.handleSubmit} >
+                  <input
+                    type="text"
+                    ref="textInput"
+                    placeholder="Type to add new suggestion" />
+                </form>
             </header>
 
             <ul>
