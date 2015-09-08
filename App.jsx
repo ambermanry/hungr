@@ -6,7 +6,7 @@ App = React.createClass({
     // Loads items from the Suggestionss collection and puts them on this.data.suggestions
     getMeteorData() {
       return {
-        suggestions: Suggestions.find({}).fetch()
+        suggestions: Suggestions.find({}, {sort: {createdAt: -1}}).fetch()
       }
     },
 
@@ -16,7 +16,7 @@ App = React.createClass({
         return <Suggestion key={suggestion._id} suggestion={suggestion} />;
       });
     },
-    
+
     handleSubmit(event) {
         event.preventDefault();
 
