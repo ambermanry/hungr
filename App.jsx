@@ -1,30 +1,33 @@
 //App component - represents the whole app
 App = React.createClass({
-  getSuggestions() {
-    return [
-      { _id: 1, text: "This is a lunch suggestion for Panera" },
-      { _id: 2, text: "This is a lunch suggestion for pizza" },
-      { _id: 3, text: "This is a lunch suggestion for sushi" }
-    ];
-  },
+  // This mixin makes the getMeteorData method work
+    mixins: [ReactMeteorData],
 
-  renderSuggestions() {
-    return this.getSuggestions().map((suggestion) => {
-      return <Suggestion key={suggestion._id} suggestion={suggestion} />;
-    });
-  },
+    // Loads items from the Suggestionss collection and puts them on this.data.suggestions
+    getMeteorData() {
+      return {
+        suggestions: Suggestions.find({}).fetch()
+      }
+    },
 
-  render() {
-    return (
-      <div className="container">
-        <header>
-          <h1>Lunch Suggestions</h1>
-        </header>
+    renderSuggestions() {
+      // Get suggestions from this.data.suggestions
+      return this.data.suggestions.map((suggestion) => {
+        return <Suggestion key={suggestion._id} suggestion={suggestion} />;
+      });
+    },
 
-        <ul>
-          {this.renderSuggestions()}
-        </ul>
-      </div>
-    );
-   }
+    render() {
+        return (
+          <div className="container">
+            <header>
+              <h1>Lunch Suggestions</h1>
+            </header>
+
+            <ul>
+              {this.renderSuggestions()}
+            </ul>
+          </div>
+        );
+    }
  });
