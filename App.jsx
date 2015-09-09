@@ -24,11 +24,15 @@ App = React.createClass({
         var place = React.findDOMNode(this.refs.place).value.trim();
         var startTime = React.findDOMNode(this.refs.startTime).value.trim();
         var endTime = React.findDOMNode(this.refs.endTime).value.trim();
+        var numAttending = React.findDOMNode(this.refs.numAttending).value.trim();
+        var notes = React.findDOMNode(this.refs.notes).value.trim();
 
         Suggestions.insert({
           place: place,
           startTime: startTime,
           endTime: endTime,
+          numAttending: numAttending,
+          notes: notes,
           createdAt: new Date() // current time
         });
 
@@ -36,6 +40,8 @@ App = React.createClass({
         React.findDOMNode(this.refs.place).value = "";
         React.findDOMNode(this.refs.startTime).value = "";
         React.findDOMNode(this.refs.endTime).value = "";
+        React.findDOMNode(this.refs.numAttending).value = "";
+        React.findDOMNode(this.refs.notes).value = "";
     },
 
     render() {
@@ -62,7 +68,21 @@ App = React.createClass({
                     ref="endTime"
                     placeholder="" />
                   </div>
+                  <div class="row">
+                  Number Attending<input
+                      type="text"
+                      ref="numAttending"
+                      placeholder="" />
+                  </div>
+                  <div class="row">
+                    Notes<input
+                        type="text"
+                        ref="notes"
+                        placeholder="" />
+                    </div>
+                    <div class="row">
                   <button onClick={this.handleSubmit} text="Create"/>
+                  </div>
                 </form>
             </header>
 

@@ -35,6 +35,8 @@ Suggestion = React.createClass({
         <span className="text">{this.props.suggestion.place}</span>
         <span className="text">{this.props.suggestion.startTime}</span>
         <span className="text">{this.props.suggestion.endTime}</span>
+        <span className="text">{this.props.suggestion.numAttending}</span>
+        <span className="text">{this.props.suggestion.notes}</span>
       </li>
     );
   }
