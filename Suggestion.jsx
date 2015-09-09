@@ -32,8 +32,9 @@ Suggestion = React.createClass({
           checked={this.props.suggestion.checked}
           onClick={this.toggleChecked} />
 
-        <span className="text">{this.props.suggestion.text}</span>
+        <span className="text">{this.props.suggestion.place}</span>
         <span className="text">{this.props.suggestion.startTime}</span>
+        <span className="text">{this.props.suggestion.endTime}</span>
       </li>
     );
   }

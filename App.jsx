@@ -21,17 +21,21 @@ App = React.createClass({
         event.preventDefault();
 
         // Find the text field via the React ref
-        var text = React.findDOMNode(this.refs.textInput).value.trim();
+        var place = React.findDOMNode(this.refs.place).value.trim();
         var startTime = React.findDOMNode(this.refs.startTime).value.trim();
+        var endTime = React.findDOMNode(this.refs.endTime).value.trim();
 
         Suggestions.insert({
-          text: text,
+          place: place,
           startTime: startTime,
+          endTime: endTime,
           createdAt: new Date() // current time
         });
 
         // Clear form
-        React.findDOMNode(this.refs.textInput).value = "";
+        React.findDOMNode(this.refs.place).value = "";
+        React.findDOMNode(this.refs.startTime).value = "";
+        React.findDOMNode(this.refs.endTime).value = "";
     },
 
     render() {
@@ -40,15 +44,25 @@ App = React.createClass({
             <header>
               <h1>Lunch Suggestions</h1>
                 <form className="new-suggestion" >
+                  <div class="row">
                   Place <input
                     type="text"
-                    ref="textInput"
+                    ref="place"
                     placeholder="Type to add new suggestion" />
+                  </div>
+                  <div class="row">
                   Start Time<input
                       type="text"
                       ref="startTime"
                       placeholder="" />
-                  <button onClick={this.handleSubmit} />
+                  </div>
+                  <div class="row">
+                  End Time<input
+                    type="text"
+                    ref="endTime"
+                    placeholder="" />
+                  </div>
+                  <button onClick={this.handleSubmit} text="Create"/>
                 </form>
             </header>
 
