@@ -22,9 +22,11 @@ App = React.createClass({
 
         // Find the text field via the React ref
         var text = React.findDOMNode(this.refs.textInput).value.trim();
+        var startTime = React.findDOMNode(this.refs.startTime).value.trim();
 
         Suggestions.insert({
           text: text,
+          startTime: startTime,
           createdAt: new Date() // current time
         });
 
@@ -37,11 +39,16 @@ App = React.createClass({
           <div className="container">
             <header>
               <h1>Lunch Suggestions</h1>
-                <form className="new-suggestion" onSubmit={this.handleSubmit} >
-                  <input
+                <form className="new-suggestion" >
+                  Place <input
                     type="text"
                     ref="textInput"
                     placeholder="Type to add new suggestion" />
+                  Start Time<input
+                      type="text"
+                      ref="startTime"
+                      placeholder="" />
+                  <button onClick={this.handleSubmit} />
                 </form>
             </header>
 

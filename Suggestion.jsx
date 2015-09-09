@@ -33,6 +33,7 @@ Suggestion = React.createClass({
           onClick={this.toggleChecked} />
 
         <span className="text">{this.props.suggestion.text}</span>
+        <span className="text">{this.props.suggestion.startTime}</span>
       </li>
     );
   }
