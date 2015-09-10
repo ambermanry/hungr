@@ -49,32 +49,30 @@ App = React.createClass({
           <div className="container">
             <header>
               <h1>Lunch Suggestions</h1>
-                <form className="new-suggestion" >
-                  <div class="row">
-                  Place <input
-                    type="text"
-                    ref="place"
-                    placeholder="Type to add new suggestion" />
+                <form class="form-inline" role="form" >
+                  <div class="form-group">
+                  <label for="place">Place:</label>
+                  <input type="text" ref="place" class="form-control" id="place"/>
                   </div>
-                  <div class="row">
+                  <div class="form-group">
                   Start Time<input
                       type="text"
                       ref="startTime"
                       placeholder="" />
                   </div>
-                  <div class="row">
+                  <div class="form-group">
                   End Time<input
                     type="text"
                     ref="endTime"
                     placeholder="" />
                   </div>
-                  <div class="row">
+                  <div class="form-group">
                   Number Attending<input
                       type="text"
                       ref="numAttending"
                       placeholder="" />
                   </div>
-                  <div class="row">
+                  <div class="form-group">
                     Notes<input
                         type="text"
                         ref="notes"
