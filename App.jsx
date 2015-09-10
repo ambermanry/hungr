@@ -81,7 +81,7 @@ App = React.createClass({
                         placeholder="" />
                     </div>
                     <div class="row">
-                  <button onClick={this.handleSubmit} text="Create"/>
+                  <button type="button" class="btn-primary" onClick={this.handleSubmit}>Add</button>
                   </div>
                 </form>
             </header>
