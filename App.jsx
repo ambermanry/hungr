@@ -1,6 +1,15 @@
-//App component - represents the whole app
+//let {RaisedButton} = mui,
 App = React.createClass({
-  // This mixin makes the getMeteorData method work
+    childContextTypes: {
+            muiTheme: React.PropTypes.object
+        },
+        getChildContext(){
+            return {
+              muiTheme: mui.Styles.ThemeManager.getMuiTheme(mui.Styles.LightRawTheme)
+            }
+        },
+
+    // This mixin makes the getMeteorData method work
     mixins: [ReactMeteorData],
 
     // Loads items from the Suggestionss collection and puts them on this.data.suggestions
@@ -9,6 +18,7 @@ App = React.createClass({
         suggestions: Suggestions.find({}, {sort: {startTime: 1}}).fetch()
       }
     },
+
 
     renderSuggestions() {
       // Get suggestions from this.data.suggestions
@@ -43,6 +53,22 @@ App = React.createClass({
         React.findDOMNode(this.refs.numAttending).value = "";
         React.findDOMNode(this.refs.notes).value = "";
     },
+
+    getInitialState(){
+        return {
+          counter: 0
+        }
+      },
+
+      _handleTap(e){
+        e.preventDefault()
+        console.log('it worked ------- !')
+        console.log(e)
+
+        this.setState({
+          counter: ++this.state.counter
+        })
+      },
 
     render() {
         return (
@@ -150,12 +176,13 @@ App = React.createClass({
                   <button type="button" class="btn-primary" onClick={this.handleSubmit}>Add</button>
                   </div>
                 </form>
-            </header>
 
+            </header>
             <ul>
               {this.renderSuggestions()}
             </ul>
           </div>
         );
     }
- });
+ })
+
