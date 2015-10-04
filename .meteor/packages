@@ -25,3 +25,8 @@ ejson
 spacebars
 check
 react-runtime
+meteorhacks:npm
+cosmos:browserify
+
+
+npm-container
