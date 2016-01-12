@@ -39,7 +39,7 @@ let {RaisedButton,AppBar,TimePicker,Card,CardTitle,CardHeader,CardMedia,CardActi
         <TimePicker
           format="ampm"
           hintText="End Time" />
-        <TextField
+        <TextField id="autocomplete"
           hintText="Location"
           hintStyle={{color: 'red'}} />
         <TextField
