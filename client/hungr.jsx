@@ -1,4 +1,4 @@
-let {RaisedButton,AppBar,TimePicker,Card,CardTitle,CardHeader,CardMedia,CardActions,CardText,FlatButton,Avatar} = mui,
+let {RaisedButton,AppBar,TimePicker,Card,CardTitle,CardHeader,CardMedia,CardActions,CardText,FlatButton,Avatar,TextField,Snackbar,SelectField,Paper,Divider} = mui,
   App = React.createClass({
 
   childContextTypes: {
@@ -11,6 +11,7 @@ let {RaisedButton,AppBar,TimePicker,Card,CardTitle,CardHeader,CardMedia,CardActi
   },
 
   getInitialState(){
+
     return {
       counter: 0
     }
@@ -31,12 +32,24 @@ let {RaisedButton,AppBar,TimePicker,Card,CardTitle,CardHeader,CardMedia,CardActi
 
       <div>
 
-        //The 12hr format
+
         <TimePicker
           format="ampm"
-          hintText="12hr Format" />
+          hintText="Start Time" />
+        <TimePicker
+          format="ampm"
+          hintText="End Time" />
+        <TextField
+          hintText="Location"
+          hintStyle={{color: 'red'}} />
+        <TextField
+          hintText="Num Attending"
+          hintStyle={{color: 'red'}} />
+        <TextField
+            hintText="Notes"
+            hintStyle={{color: 'red'}} />
 
-
+        <RaisedButton primary label='Create New Meeting' onTouchTap={this._handleTap} />
         <Card initiallyExpanded={false}>
           <CardHeader
             title="Title"
@@ -52,6 +65,18 @@ let {RaisedButton,AppBar,TimePicker,Card,CardTitle,CardHeader,CardMedia,CardActi
           </CardText>
           <CardActions expandable={true}>
             <RaisedButton primary label='Join' onTouchTap={this._handleTap} />
+            <RaisedButton
+                      onTouchTap={this.handleTouchTap}
+                      label="Add to my calendar"
+                    />
+            <Snackbar
+                      open={this.state.open}
+                      message={this.state.message}
+                      action="undo"
+                      autoHideDuration={this.state.autoHideDuration}
+                      onActionTouchTap={this.handleActionTouchTap}
+                      onRequestClose={this.handleRequestClose}
+                    />
           </CardActions>
           <CardText expandable={true}>
             <p>You've pressed the button <b>{this.state.counter}</b> times.</p>
