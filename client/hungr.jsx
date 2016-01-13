@@ -1,3 +1,6 @@
+// Define a collection to hold our suggestions
+Suggestions = new Mongo.Collection("suggestions");
+
 let {RaisedButton,AppBar,TimePicker,Card,CardTitle,CardHeader,CardMedia,CardActions,CardText,FlatButton,Avatar,TextField,Snackbar,SelectField,Paper,Divider} = mui,
   App = React.createClass({
 
@@ -8,6 +11,21 @@ let {RaisedButton,AppBar,TimePicker,Card,CardTitle,CardHeader,CardMedia,CardActi
     return {
       muiTheme: mui.Styles.ThemeManager.getMuiTheme(mui.Styles.LightRawTheme)
     }
+  },
+
+  // Loads items from the Suggestionss collection and puts them on this.data.suggestions
+  getMeteorData() {
+    return {
+      suggestions: Suggestions.find({}, {sort: {startTime: 1}}).fetch()
+    }
+  },
+
+
+  renderSuggestions() {
+    // Get suggestions from this.data.suggestions
+    return this.data.suggestions.map((suggestion) => {
+      return <Suggestion key={suggestion._id} suggestion={suggestion} />;
+    });
   },
 
   getInitialState(){
@@ -27,6 +45,34 @@ let {RaisedButton,AppBar,TimePicker,Card,CardTitle,CardHeader,CardMedia,CardActi
     })
   },
 
+  createSuggesion(event){
+      event.preventDefault();
+
+      // Find the text field via the React ref
+      var place = React.findDOMNode(this.refs.place).value.trim();
+      var startTime = React.findDOMNode(this.refs.startTime).value;
+      var endTime = React.findDOMNode(this.refs.endTime).value;
+      var numAttending = React.findDOMNode(this.refs.numAttending).value;
+      var notes = React.findDOMNode(this.refs.notes).value.trim();
+
+      Suggestions.insert({
+        place: place,
+        startTime: startTime,
+        endTime: endTime,
+        numAttending: numAttending,
+        notes: notes,
+        createdAt: new Date() // current time
+      });
+
+      // Clear form
+      React.findDOMNode(this.refs.place).value = "";
+      React.findDOMNode(this.refs.startTime).value = "";
+      React.findDOMNode(this.refs.endTime).value = "";
+      React.findDOMNode(this.refs.numAttending).value = "";
+      React.findDOMNode(this.refs.notes).value = "";
+    },
+
+
   render(){
     return (
 
@@ -34,22 +80,27 @@ let {RaisedButton,AppBar,TimePicker,Card,CardTitle,CardHeader,CardMedia,CardActi
 
 
         <TimePicker
+          id="startTime"
           format="ampm"
           hintText="Start Time" />
         <TimePicker
+          id="endTime"
           format="ampm"
           hintText="End Time" />
-        <TextField id="autocomplete"
+        <TextField
+          id="place"
           hintText="Location"
           hintStyle={{color: 'red'}} />
         <TextField
+          id="numAttending"
           hintText="Num Attending"
           hintStyle={{color: 'red'}} />
         <TextField
+          id="notes"
             hintText="Notes"
             hintStyle={{color: 'red'}} />
 
-        <RaisedButton primary label='Create New Meeting' onTouchTap={this._handleTap} />
+        <RaisedButton primary label='Create New Meeting' onTouchTap={this.createSuggestion} />
         <Card initiallyExpanded={false}>
           <CardHeader
             title="Title"
@@ -82,6 +133,7 @@ let {RaisedButton,AppBar,TimePicker,Card,CardTitle,CardHeader,CardMedia,CardActi
             <p>You've pressed the button <b>{this.state.counter}</b> times.</p>
           </CardText>
         </Card>
+       
       </div>
     )
   }
