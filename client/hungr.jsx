@@ -1,4 +1,5 @@
 // Define a collection to hold our suggestions
+//TODO:  http://stackoverflow.com/questions/16739810/getting-a-error-inserting-in-to-a-meteor-collection
 Suggestions = new Mongo.Collection("suggestions");
 
 let {RaisedButton,AppBar,TimePicker,Card,CardTitle,CardHeader,CardMedia,CardActions,CardText,FlatButton,Avatar,TextField,Snackbar,SelectField,Paper,Divider} = mui,
@@ -63,7 +64,9 @@ App = React.createClass({
         //var notes = React.findDOMNode(this.refs.notes).getValue();
 
         console.log("place: " + place.value);
-        Suggestions.insert({
+
+
+        Suggestions._collection.insert({
         place: place.value,
         startTime: startTime.value,
         endTime: endTime.value,
