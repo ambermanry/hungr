@@ -7,6 +7,6 @@ GoogleMaps.init({
 
 window.onload = function() {
     var autocomplete = new google.maps.places.Autocomplete(
-        (document.getElementById('autocomplete')),{types: ['geocode'] }
+        (document.getElementById('autocomplete')),{types: ['establishment','geocode'] }
     );
 };
