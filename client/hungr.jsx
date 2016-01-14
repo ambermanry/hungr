@@ -52,19 +52,15 @@ App = React.createClass({
     createSuggestion(event){
         event.preventDefault();
 
-        // Find the text field via the React ref
-        //var place = React.findDOMNode(this.refs.place).getValue();
-        //var startTime = React.findDOMNode(this.refs.startTime).getValue();
-        //var endTime = React.findDOMNode(this.refs.endTime).getValue();
-        //var numAttending = React.findDOMNode(this.refs.numAttending).getValue();
-        //var notes = React.findDOMNode(this.refs.notes).getValue();
-
         console.log("place: " + place.value);
-
+        console.log(this.refs.startTime.getTime());
+        console.log(this.refs.startTime.formatTime(this.refs.startTime.getTime()));
 
         Suggestions.insert({
         place: place.value,
         startTime: startTime.value,
+        //startTime: this.refs.startTime.getTime(),
+        //startTime: this.refs.startTime.formatTime(this.refs.startTime.getTime()),
         endTime: endTime.value,
         numAttending: numAttending.value,
         notes: notes.value,
@@ -88,12 +84,12 @@ App = React.createClass({
                 <TimePicker
                         id="startTime"
                         ref="startTime"
-                        format="ampm"
+                        format="24hr"
                         hintText="Start Time" />
                 <TimePicker
                         id="endTime"
                         ref="endTime"
-                        format="ampm"
+                        format="24hr"
                         hintText="End Time" />
                 <TextField
                         id="place"
