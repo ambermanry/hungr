@@ -88,13 +88,11 @@ App = React.createClass({
                 <TimePicker
                         id="startTime"
                         ref="startTime"
-                        valueLink={this.linkState('startTime')}
                         format="ampm"
                         hintText="Start Time" />
                 <TimePicker
                         id="endTime"
                         ref="endTime"
-                        valueLink={this.linkState('endTime')}
                         format="ampm"
                         hintText="End Time" />
                 <TextField
