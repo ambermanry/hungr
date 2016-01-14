@@ -5,7 +5,7 @@ Suggestions = new Mongo.Collection("suggestions");
 let {RaisedButton,AppBar,TimePicker,Card,CardTitle,CardHeader,CardMedia,CardActions,CardText,FlatButton,Avatar,TextField,Snackbar,SelectField,Paper,Divider} = mui,
 App = React.createClass({
 
-    mixins: [React.addons.LinkedStateMixin],
+    mixins: [ReactMeteorData, React.addons.LinkedStateMixin],
 
     childContextTypes: {
         muiTheme: React.PropTypes.object
@@ -153,6 +153,8 @@ App = React.createClass({
                         <p>You've pressed the button <b>{this.state.counter}</b> times.</p>
                     </CardText>
                 </Card>
+
+                    {this.renderSuggestions()}
 
             </div>
         )
