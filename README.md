@@ -5,6 +5,8 @@ As part of a POC, the Hungr app was created using React JSX for the front-end co
 Before starting this POC, I viewed this video: http://info.meteor.com/blog/two-weeks-with-react-and-meteor
 This POC followed the Meteor/React TODOS tutorial at http://tutorial-viewer.meteor.com/tutorial/0/react
 
+During the course of this POC, I decided that I wanted to incorporate Material UI, which is Google's front-end components that were built for React.  In order to accomplish this, I can to include browserify and I followed this article:  https://github.com/kimsk/meteor-react-material-ui
+
 To start working with this project with a Mac, do the following:
 
 1. curl https://install.meteor.com/ | sh
@@ -14,10 +16,7 @@ To start working with this project with a Mac, do the following:
 5. meteor
 6. go to http://localhost:3000
 
-Before step 5, we may need to do the following (Please let me know if these steps are needed since I would like to update the README):
 
-1.  meteor add react
-2.  meteor add firfi:meteor-react-bootstrap
 
 In order to deploy to the publicly available hungr website at http://icfi-hungr.meteor.com, you will need to create a Meteor developer account at http://www.meteor.com.  You must then email amber.manry@icfi.com to be added to the icfi group.  This is only intended for ICF employees.  To test whether you can deploy your changes to meteor version, do the following:
 
