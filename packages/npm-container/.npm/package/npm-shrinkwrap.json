@@ -453,7 +453,7 @@
       "version": "0.3.5"
     },
     "formsy-react": {
-      "version": "0.17.0",
+      "version": "0.16.0",
       "dependencies": {
         "form-data-to-object": {
           "version": "0.1.0"
