@@ -34,8 +34,49 @@ App = React.createClass({
             startTime: '',
             endTime: '',
             place: '',
-            notes: ''
+            notes: '',
+            canSumbit: false
         }
+    },
+
+    errorMessages: {
+        wordsError: "Please only use letters",
+        numericError: "Please provide a number",
+        urlError: "Please provide a valid URL"
+    },
+
+    styles: {
+        paperStyle: {
+            width: 300,
+            margin: 20,
+            padding: 20
+        },
+        switchStyle: {
+            marginBottom:16
+        },
+        submitStyle: {
+            marginTop: 32
+        }
+    },
+
+    enableButton() {
+        this.setState({
+            canSubmit: true
+        });
+    },
+
+    disableButton() {
+        this.setState({
+            canSubmit: false
+        });
+    },
+
+    submitForm(data) {
+        alert(JSON.stringify(data, null, 4));
+    },
+
+    notifyFormError(data) {
+        console.error('Form error:', data);
     },
 
     _handleTap(e){
@@ -69,8 +110,16 @@ App = React.createClass({
 
 
     render(){
+        let {paperStyle, switchStyle, submitStyle } = this.styles;
+        let { wordsError, numericError, urlError } = this.errorMessages;
         return (
-            <div>
+        <Paper style={paperStyle}>
+
+        <Formsy.Form
+                onValid={this.enableButton}
+                onInvalid={this.disableButton}
+                onValidSubmit={this.submitForm}
+                onInvalidSubmit={this.notifyFormError} >
                 <TimePicker
                         id="startTime"
                         ref="startTime"
@@ -103,11 +152,12 @@ App = React.createClass({
 
                 {this.renderSuggestions()}
 
-            </div>
+            </Formsy.Form>
+        </Paper>
         )
     }
 })
 
 Meteor.startup(()=>{
-    React.render(<App note="HELLLOOOOO"/>, document.body)
+    React.render(<App/>, document.body)
 })
