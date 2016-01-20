@@ -35,9 +35,10 @@ Suggestion = React.createClass({
 
         const suggestionClassName = this.props.suggestion.checked ? "checked" : "";
         const subTitle = this.props.suggestion.startTime + "-" + this.props.suggestion.endTime;
-        const numAttending = (participants !== undefined) ?
+        const numAttending = (participants !== undefined && participants) ?
             participants.length : 0;
-        const prettyPrintParticipants = participants.join(", ");
+
+        const prettyPrintParticipants = (participants) ? participants.join(", ") : "";
 
         return (
           <li className={suggestionClassName}>
