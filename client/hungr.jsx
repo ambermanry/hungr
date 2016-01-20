@@ -34,8 +34,7 @@ App = React.createClass({
             startTime: '',
             endTime: '',
             place: '',
-            notes: '',
-            numAttending: 1
+            notes: ''
         }
     },
 
@@ -57,14 +56,12 @@ App = React.createClass({
         console.log(this.refs.startTime.formatTime(this.refs.startTime.getTime()));
 
         Suggestions.insert({
-        place: place.value,
-        startTime: startTime.value,
-        //startTime: this.refs.startTime.getTime(),
-        //startTime: this.refs.startTime.formatTime(this.refs.startTime.getTime()),
-        endTime: endTime.value,
-        numAttending: numAttending.value,
-        notes: notes.value,
-        createdAt: new Date() // current time
+            place: place.value,
+            startTime: startTime.value,
+            endTime: endTime.value,
+            notes: notes.value,
+            createdAt: new Date(),
+            participants : [prompt("Who are you?")]
         });
 
         // Clear form
