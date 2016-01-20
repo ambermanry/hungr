@@ -47,7 +47,6 @@ App = React.createClass({
 
     styles: {
         paperStyle: {
-            width: 300,
             margin: 20,
             padding: 20
         },
@@ -139,6 +138,8 @@ App = React.createClass({
                         id="numAttending"
                         valueLink={this.linkState('numAttending')}
                         ref="numAttending"
+                        validations="isNumeric"
+                        validationError={numericError}
                         hintText="Num Attending"
                          />
                 <TextField
