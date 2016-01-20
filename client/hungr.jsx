@@ -79,17 +79,15 @@ App = React.createClass({
     render(){
         return (
             <div>
-
-
                 <TimePicker
                         id="startTime"
                         ref="startTime"
-                        format="24hr"
+                        format="ampm"
                         hintText="Start Time" />
                 <TimePicker
                         id="endTime"
                         ref="endTime"
-                        format="24hr"
+                        format="ampm"
                         hintText="End Time" />
                 <TextField
                         id="place"
@@ -111,40 +109,8 @@ App = React.createClass({
                          />
 
                 <RaisedButton primary label='Create New Meeting' onTouchTap={this.createSuggestion} />
-                <Card initiallyExpanded={false}>
-                    <CardHeader
-                            title="Title"
-                            subtitle="Subtitle"
-                            avatar={<Avatar style={{color:'red'}}>A</Avatar>}
-                        showExpandableButton={true}>
-                    </CardHeader>
-                    <CardText expandable={true}>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                        Donec mattis pretium massa. Aliquam erat volutpat. Nulla facilisi.
-                        Donec vulputate interdum sollicitudin. Nunc lacinia auctor quam sed pellentesque.
-                        Aliquam dui mauris, mattis quis lacus id, pellentesque lobortis odio.
-                    </CardText>
-                    <CardActions expandable={true}>
-                        <RaisedButton primary label='Join' onTouchTap={this._handleTap} />
-                        <RaisedButton
-                                onTouchTap={this.handleTouchTap}
-                                label="Add to my calendar"
-                                />
-                        <Snackbar
-                                open={this.state.open}
-                                message={this.state.message}
-                                action="undo"
-                                autoHideDuration={this.state.autoHideDuration}
-                                onActionTouchTap={this.handleActionTouchTap}
-                                onRequestClose={this.handleRequestClose}
-                                />
-                    </CardActions>
-                    <CardText expandable={true}>
-                        <p>You've pressed the button <b>{this.state.counter}</b> times.</p>
-                    </CardText>
-                </Card>
 
-                    {this.renderSuggestions()}
+                {this.renderSuggestions()}
 
             </div>
         )
@@ -152,5 +118,5 @@ App = React.createClass({
 })
 
 Meteor.startup(()=>{
-    React.render(<App />, document.body)
+    React.render(<App note="HELLLOOOOO"/>, document.body)
 })
