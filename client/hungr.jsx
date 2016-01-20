@@ -64,12 +64,7 @@ App = React.createClass({
             participants : [prompt("Who are you?")]
         });
 
-        // Clear form
-        //React.findDOMNode(this.refs.place).value = "";
-        //React.findDOMNode(this.refs.startTime).value = "";
-        //React.findDOMNode(this.refs.endTime).value = "";
-        //React.findDOMNode(this.refs.numAttending).value = "";
-        //React.findDOMNode(this.refs.notes).value = "";
+
     },
 
 
@@ -90,8 +85,7 @@ App = React.createClass({
                         id="place"
                         valueLink={this.linkState('place')}
                         ref="place"
-                        hintText="Location"
-                         />
+                        />
                 <TextField
                         id="numAttending"
                         valueLink={this.linkState('numAttending')}
