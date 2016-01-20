@@ -78,16 +78,6 @@ App = React.createClass({
         console.error('Form error:', data);
     },
 
-    _handleTap(e){
-        e.preventDefault()
-        console.log('it worked ------- !')
-        console.log(e)
-
-        this.setState({
-            counter: ++this.state.counter
-        })
-    },
-
     createSuggestion(event){
         event.preventDefault();
 
@@ -117,7 +107,7 @@ App = React.createClass({
         <Formsy.Form
                 onValid={this.enableButton}
                 onInvalid={this.disableButton}
-                onValidSubmit={this.submitForm}
+                onValidSubmit={this.createSuggestion}
                 onInvalidSubmit={this.notifyFormError} >
                 <TimePicker
                         id="startTime"
@@ -148,6 +138,12 @@ App = React.createClass({
                         valueLink={this.linkState('notes')}
                         hintText="Notes"
                          />
+
+                <RaisedButton
+                    style={submitStyle}
+                    type="submit"
+                    label="Submit"
+                    disabled={!this.state.canSubmit} />
 
                 <RaisedButton primary label='Create New Meeting' onTouchTap={this.createSuggestion} />
 
