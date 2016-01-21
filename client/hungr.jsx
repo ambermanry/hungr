@@ -30,11 +30,7 @@ App = React.createClass({
 
     getInitialState(){
         return {
-            counter: 0,
-            startTime: '',
-            endTime: '',
             place: '',
-            notes: '',
             canSumbit: false
         }
     },
@@ -123,12 +119,12 @@ App = React.createClass({
                         ref="endTime"
                         floatingLabelText="End Time" />
 
-                <TextField
+                <FormsyText
                         id="place"
                         name="place"
-                        valueLink={this.linkState('place')}
                         ref="place"
-                         />
+                        floatingLabelText="Type any location/restaurant"
+                        />
 
                 <input type="hidden" id="numAttending" name="numAttending" value="1"/>
 
@@ -147,49 +143,7 @@ App = React.createClass({
                             disabled={!this.state.canSubmit} />
 
 
-    {/*    <Formsy.Form
-                onValid={this.enableButton}
-                onInvalid={this.disableButton}
-                onValidSubmit={this.createSuggestion}
-                onInvalidSubmit={this.notifyFormError} >
-                <TimePicker
-                        id="startTime"
-                        ref="startTime"
-                        format="ampm"
-                        hintText="Start Time" />
-                <TimePicker
-                        id="endTime"
-                        ref="endTime"
-                        format="ampm"
-                        hintText="End Time" />
-                <TextField
-                        id="place"
-                        valueLink={this.linkState('place')}
-                        ref="place"
-                        />
-                <TextField
-                        id="numAttending"
-                        valueLink={this.linkState('numAttending')}
-                        ref="numAttending"
-                        validations="isNumeric"
-                        validationError={numericError}
-                        hintText="Num Attending"
-                         />
-                <TextField
-                        id="notes"
-                        ref="notes"
-                        valueLink={this.linkState('notes')}
-                        hintText="Notes"
-                         />
 
-                <RaisedButton
-                    style={submitStyle}
-                    type="submit"
-                    label="Submit"
-                    disabled={!this.state.canSubmit} />
-
-                <RaisedButton primary label='Create New Meeting' onTouchTap={this.createSuggestion} />
-*/}
 
 
 
