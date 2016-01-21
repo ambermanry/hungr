@@ -88,9 +88,9 @@ App = React.createClass({
 
         Suggestions.insert({
             place: place.value,
-            startTime: startTime.value,
-            endTime: endTime.value,
-            notes: notes.value,
+            startTime: $("#startTime").val(),
+            endTime: $("#endTime").val(),
+            notes: $("#notes").val(),
             createdAt: new Date(),
             participants : [prompt("Who are you?")]
         });
@@ -113,8 +113,8 @@ App = React.createClass({
                     onInvalidSubmit={this.notifyFormError} >
 
                 <FormsyTime
+                        id="startTime"
                         name="startTime"
-                        required
                         floatingLabelText="Start Time" />
 
                 <FormsyTime
@@ -130,13 +130,7 @@ App = React.createClass({
                         ref="place"
                          />
 
-                <FormsyText
-                        id="numAttending"
-                        name="numAttending"
-                        validations="isNumeric"
-                        validationError={numericError}
-                        hintText="Number Attending"
-                        floatingLabelText="Number Attending" />
+                <input type="hidden" id="numAttending" name="numAttending" value="1"/>
 
                 <FormsyText
                         id="notes"
