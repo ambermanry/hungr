@@ -104,7 +104,47 @@ App = React.createClass({
         return (
         <Paper style={paperStyle}>
 
-        <Formsy.Form
+            <Formsy.Form
+                    onValid={this.enableButton}
+                    onInvalid={this.disableButton}
+                    onValidSubmit={this.createSuggestion}
+                    onInvalidSubmit={this.notifyFormError} >
+
+                <FormsyTime
+                        name="startTime"
+                        ref="startTime"
+                        required
+                        floatingLabelText="Start Time" />
+
+                <FormsyTime
+                        name="endTime"
+                        ref="endTime"
+                        required
+                        floatingLabelText="End Time" />
+
+                <FormsyText
+                        id="place"
+                        name="place"
+                        ref="place"
+                        floatingLabelText="Type a location" />
+
+                <FormsyText
+                        name="numAttending"
+                        validations="isNumeric"
+                        validationError={numericError}
+                        hintText="Number Attending"
+                        floatingLabelText="Number Attending" />
+
+
+
+                    <RaisedButton
+                            style={submitStyle}
+                            type="submit"
+                            label="Post Suggestion"
+                            onTouchTap={this.createSuggestion}
+                            disabled={!this.state.canSubmit} />
+
+        {/*<Formsy.Form
                 onValid={this.enableButton}
                 onInvalid={this.disableButton}
                 onValidSubmit={this.createSuggestion}
@@ -146,10 +186,12 @@ App = React.createClass({
                     disabled={!this.state.canSubmit} />
 
                 <RaisedButton primary label='Create New Meeting' onTouchTap={this.createSuggestion} />
+                */}
 
-                {this.renderSuggestions()}
+
 
             </Formsy.Form>
+            {this.renderSuggestions()}
         </Paper>
         )
     }
