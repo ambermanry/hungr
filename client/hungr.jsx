@@ -79,11 +79,12 @@ App = React.createClass({
     },
 
     createSuggestion(event){
-        event.preventDefault();
 
         console.log("place: " + place.value);
-        console.log(this.refs.startTime.getTime());
-        console.log(this.refs.startTime.formatTime(this.refs.startTime.getTime()));
+        //console.log(startTime.value);
+//console.log(this.refs.startTime.value);
+        //console.log(this.refs.startTime.getTime());
+        //console.log(this.refs.startTime.formatTime(this.refs.startTime.getTime()));
 
         Suggestions.insert({
             place: place.value,
@@ -102,6 +103,7 @@ App = React.createClass({
         let {paperStyle, switchStyle, submitStyle } = this.styles;
         let { wordsError, numericError, urlError } = this.errorMessages;
         return (
+        <div>
         <Paper style={paperStyle}>
 
             <Formsy.Form
@@ -112,28 +114,35 @@ App = React.createClass({
 
                 <FormsyTime
                         name="startTime"
-                        ref="startTime"
                         required
                         floatingLabelText="Start Time" />
 
                 <FormsyTime
+                        id="endTime"
                         name="endTime"
                         ref="endTime"
-                        required
                         floatingLabelText="End Time" />
 
-                <FormsyText
+                <TextField
                         id="place"
                         name="place"
+                        valueLink={this.linkState('place')}
                         ref="place"
-                        floatingLabelText="Type a location" />
+                         />
 
                 <FormsyText
+                        id="numAttending"
                         name="numAttending"
                         validations="isNumeric"
                         validationError={numericError}
                         hintText="Number Attending"
                         floatingLabelText="Number Attending" />
+
+                <FormsyText
+                        id="notes"
+                        name="notes"
+                        hintText="Notes"
+                        floatingLabelText="Type any relevant information" />
 
 
 
@@ -141,10 +150,10 @@ App = React.createClass({
                             style={submitStyle}
                             type="submit"
                             label="Post Suggestion"
-                            onTouchTap={this.createSuggestion}
                             disabled={!this.state.canSubmit} />
 
-        {/*<Formsy.Form
+
+    {/*    <Formsy.Form
                 onValid={this.enableButton}
                 onInvalid={this.disableButton}
                 onValidSubmit={this.createSuggestion}
@@ -186,17 +195,18 @@ App = React.createClass({
                     disabled={!this.state.canSubmit} />
 
                 <RaisedButton primary label='Create New Meeting' onTouchTap={this.createSuggestion} />
-                */}
+*/}
 
 
 
             </Formsy.Form>
             {this.renderSuggestions()}
         </Paper>
+        </div>
         )
     }
 })
 
 Meteor.startup(()=>{
-    React.render(<App/>, document.body)
+    ReactDOM.render(<App/>, document.body)
 })
