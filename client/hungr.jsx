@@ -155,5 +155,5 @@ App = React.createClass({
 })
 
 Meteor.startup(()=>{
-    ReactDOM.render(<App/>, document.body)
+    ReactDOM.render(<App/>, document.getElementById("render-target"))
 })
