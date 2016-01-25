@@ -123,7 +123,6 @@ App = React.createClass({
                         id="place"
                         name="place"
                         ref="place"
-                        floatingLabelText="Type any location/restaurant"
                         />
 
                 <input type="hidden" id="numAttending" name="numAttending" value="1"/>
