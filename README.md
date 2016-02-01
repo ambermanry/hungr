@@ -1,7 +1,7 @@
 # hungr
 
 NOTE:  This app is being replaced with the app at https://github.com/ambermanry/hungr-semantic-ui.git.  The new application uses Meteor and Semantic UI.  It is deployed at http://icfolson-hungr.meteor.com
-This website/app uses Meteor and React JSX.  It provides a way for co-workers to make lunch plans.  This website can be demo'ed at http://icfi-hungr.meteor.com
+This website/app uses Meteor and React JSX.  It provides a way for co-workers to make lunch plans.  This website can be demo'ed at http://icfi-hungr.meteor.com/lunchroom
 
 As part of a POC, the Hungr app was created using React JSX for the front-end components and Meteor instead of using Flux.  Meteor is an isomorphic javascript framework that comes bundled with Node.js and MongoDB as the data store.  For more info on Meteor, go to http://www.meteor.com.  
 Before starting this POC, I viewed this video: http://info.meteor.com/blog/two-weeks-with-react-and-meteor
